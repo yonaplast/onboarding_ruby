@@ -31,9 +31,13 @@ end
 
 #Step 4
 #For each word in the array, if the word contains two consecutive consonants, replace them by a capital "S"
-def delete_consonants_duplicated(array_of_strings=["hello", "from", "streaver"])
-    array_of_strings.map { |string| string.gsub!(/[^aeiouAEIOU]{2,}/,'S') }
+def delete_consonants_duplicated(array_of_strings=["hello", "from", "streaver"], replace='S')
+    array_of_strings.map { |string| string.gsub!(/[^aeiouAEIOU]{2,}/,replace) }
 end
+
+#Step 5
+#Provide a CLI based solution to interact with and make the entry data variable
+
 
 puts "Step 1"
 puts give_streaver
@@ -50,3 +54,49 @@ puts "\n"
 puts "Step 4"
 puts delete_consonants_duplicated.to_s
 puts "\n"
+
+array_global = []
+puts "NOW YOU CAN TRY WITH YOUR ARRAY :)"
+puts "First add strings, stop with entry nil\n"
+print "FIRST STRING: "
+string = gets.chomp
+while (string != 'nil') do
+    array_global.push(string)
+    print "OTHER STRING: "
+    string = gets.chomp  
+end
+puts "Ok your array is #{array_global}"
+puts "\n"
+
+puts "NOW CHOOSE\n"
+puts "1. Add a new element"
+puts "2. Convert all strings to capital"
+puts "3. Delete characteres consecutive"
+puts "4. To exit"
+
+print "OPTION: "
+option = gets.chomp
+while (option != "4") do
+    case option
+    when "1"
+        puts "\n\nSelect a element with index"
+        print "INDEX: "
+        index = gets.chomp.to_i
+        print "STRING: "
+        string = gets.chomp
+        puts add_string(array_global, index, string).to_s
+        puts "\n"
+    when "2"
+        puts "\n\nConvert all strings to capital"
+        puts convert_string_to_capitals(array_global).to_s
+        puts "\n"
+    when "3"
+        puts "\n\nDelete characteres consecutive"
+        print "STRING TO REPLACE: "
+        replace = gets.chomp
+        puts delete_consonants_duplicated(array_global,replace).to_s
+        puts "\n"
+    end
+    print "OPTION: "
+    option = gets.chomp
+end
