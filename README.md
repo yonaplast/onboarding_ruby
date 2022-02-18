@@ -19,4 +19,4 @@ To try the first quiz you need run:
 	gem install colorize
 	ruby quiz_one.rb
 
-Then enjoy it and please give a feedback! 🦫
+Then enjoy it and please give me a feedback! 🦫
